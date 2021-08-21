@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Hello, world!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }} ">
+    {% block head %}{% endblock %}
+  </head>
+  <body>
+    <h2>base.html</h2>
+    <p>This template is from base.html</p>
+    {% block body %}{% endblock %}
+  </body>
+</html>
