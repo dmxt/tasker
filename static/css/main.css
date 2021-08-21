@@ -10,7 +10,7 @@ body {
 
 td, th {
     text-align: center;
-    padding: 8px;
+    padding: 4px;
     border-bottom: 2px solid #ddd;
     border-left: 2px solid #ddd;
 }
@@ -22,6 +22,31 @@ table {
 
 .content {
     margin: 0 auto;
-    width: 400px
+    width: 570px
 }
 
+form.add-task {
+    margin-bottom: 25px;
+}
+
+table .added {
+    min-width: 100px;
+}
+
+table .actions {
+    min-width: 150px;
+}
+
+table .task-content {
+    min-width: 250px;
+}
+
+table li {
+    display: inline;
+    padding-right: 10px;
+}
+
+table ul {
+    padding-inline-start: 0;
+    list-style: none;
+}
