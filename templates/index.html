@@ -8,28 +8,30 @@
 <div class="content container">
   <h1>Table master</h1>
 
+  <form action="/" method="POST" class="add-task">
+    <input type="text" name="content" id="content"> <!-- request.form['content'] -->
+    <input type="submit" value="Add task">
+  </form>
+
   <table>
     <tr>
-      <th>Task</th>
-      <th>Added</th>
-      <th>Actions</th>
+      <th class="task-content">Task</th>
+      <th class="added">Added</th>
+      <th class="actions">Actions</th>
     </tr>
     {% for task in tasks %}
     <tr>
       <td>{{ task.content }}</td>
       <td>{{ task.date_created.date() }}</td>
       <td>
-        <a href="">Delete</a>
-        <br>
-        <a href="">Update</a>
+        <ul>
+          <li><a href="/delete/{{task.id}}">Delete</a></li>
+          <li><a href="">Update</a></li>
+        </ul>
       </td>
     </tr>
     {% endfor %}
   </table>
 
-  <form action="/" method="POST">
-    <input type="text" name="content" id="content"> <!-- request.form['content'] -->
-    <input type="submit" value="Add task">
-  </form>
 </div>
 {% endblock %}
