@@ -13,6 +13,9 @@
     <input type="submit" value="Add task">
   </form>
 
+  {% if tasks|length < 1 %}
+  <p>No tasks available. Try creating a new task.</p>
+  {% else %}
   <table>
     <tr>
       <th class="task-content">Task</th>
@@ -26,12 +29,13 @@
       <td>
         <ul>
           <li><a href="/delete/{{task.id}}">Delete</a></li>
-          <li><a href="">Update</a></li>
+          <li><a href="/update/{{task.id}}">Update</a></li>
         </ul>
       </td>
     </tr>
     {% endfor %}
   </table>
+  {% endif %}
 
 </div>
 {% endblock %}
