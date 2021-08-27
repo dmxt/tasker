@@ -3,9 +3,11 @@ import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+
 class BaseConfig(object):
     APP_NAME = os.getenv("APP_NAME", "app")
     SERVER_NAME = os.getenv("SERVER_NAME", None)
+
 
 class DevelopmentConfig(BaseConfig):
     """Development configuration."""
@@ -14,6 +16,7 @@ class DevelopmentConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         "DATABASE_URL", "sqlite:///{0}".format(os.path.join(basedir, "dev.db"))
     )
+
 
 class TestingConfig(BaseConfig):
     """Testing configuration."""
@@ -24,6 +27,7 @@ class TestingConfig(BaseConfig):
     )
     TESTING = True
 
+
 class ProductionConfig(BaseConfig):
     """Production configuration."""
     BCRYPT_LOG_ROUNDS = 13
@@ -31,7 +35,7 @@ class ProductionConfig(BaseConfig):
         "DATABASE_URL",
         "sqlite:///{0}".format(os.path.join(basedir, "prod.db")),
     )
-    APP_SECRET = "54e783cd42b34f4bbea9155d6a66fdc4"
-    SECRET_KEY = "8074aff47a024be190750eb5d17349fd"
+    APP_SECRET = ""
+    SECRET_KEY = ""
     WTF_CSRF_ENABLED = True
-    WTF_CSRF_SECRET_KEY = "a284ab2ef65b477ca0e3e8d65baba52c"
+    WTF_CSRF_SECRET_KEY = ""
