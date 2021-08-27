@@ -2,23 +2,28 @@ from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
+app = Flask(__name__,
+            template_folder="../client/templates",
+            static_folder="../client/static")
 
-def create_app():
-    app = Flask(__name__,
-                template_folder="../client/templates",
-                static_folder="../client/static")
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../../test.db'
-    app.config['DEBUG'] = True
-    db = SQLAlchemy(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['DEBUG'] = True
 
-    class Todo(db.Model):
-        id = db.Column(db.Integer, primary_key=True)
-        content = db.Column(db.String(200), nullable=False)
-        completed = db.Column(db.Integer, default=0)
-        date_created = db.Column(db.DateTime, default=datetime.utcnow)
+db = SQLAlchemy(app)
 
-        def __repr__(self):
-            return '<Task %r>' % self.id
+
+class Todo(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.String(200), nullable=False)
+    completed = db.Column(db.Integer, default=0)
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return '<Task %r>' % self.id
+
+
+def create_app(test_config=None):
 
     @app.route('/', methods=['POST', 'GET'])
     def index():
