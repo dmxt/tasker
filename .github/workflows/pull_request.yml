@@ -23,4 +23,6 @@ jobs:
 
       - name: Test
         run: |
+          ls
+          pwd
           ./run-tests.sh
