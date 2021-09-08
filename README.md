@@ -40,6 +40,21 @@ Open in browser on localhost via port 5000
 http://localhost:5000/
 ```
 
+## Docker
+Build a container using instruction from `Dockerfile`.
+```
+$ docker build -t tasker .
+```
+Run a docker container. `-p 3000:5000` expose port 5000 inside container to port 3000 outside.
+```
+$ docker run -p 3000:5000 tasker
+```
+You can connect to container via port **3000**.
+```angular2html
+http://localhost:3000/ 
+```
+
+
 ## Testing
 To run testing, use the command below:
 ```
