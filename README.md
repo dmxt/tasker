@@ -6,7 +6,7 @@ Complete these steps one time in order to run an app:
 
 1. Enter virtual environment
 ```
-$ virtualenv env --python=python3
+$ python3 -m venv env
 $ source env/bin/activate
 ```
 
